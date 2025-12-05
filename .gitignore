@@ -1,1 +1,67 @@
+# Data files
 *.parquet
+*.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated output directories
+2019_reduced/
+2024_reduced/
+matches_students_*/
+geocode_students_*/
+geocode_results_*/
+geocode_table_*/
+
+# Data directories (except READMEs)
+data/input/*
+!data/input/.gitkeep
+data/output/*
+!data/output/.gitkeep
+data/intermediate/*
+!data/intermediate/.gitkeep
+
+# DuckDB files
+*.ddb
+*.db
+
+# Temporary files
+*.tmp
+*.bak
+.aux
