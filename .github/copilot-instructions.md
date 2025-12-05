@@ -112,17 +112,17 @@ pip install ibis-framework[duckdb] polars pandas pyarrow rapidfuzz censusbatchge
 ### Running a Full Matching Pipeline:
 ```python
 # 1. Run matching in batches
-# Parameters: (result_dir, input_voter_folder, student_base_file, type, birth_year_tolerance)
+# Parameters: (res_dir, folder, base_file, type, birth_year_tol)
 run_matching_in_batches('Full_students_2024_10_14_2025/', '2024_reduced/', 'total_cohorts_09_22_2025.parquet', 'students', 7)
 
 # 2. Merge results
-merge_matching_batches('Full_students_2024_10_14_2025/', 'matches_students_2024_formatted.parquet')
+merge_matching_batches('Full_students_2024_10_14_2025/', 'matches_students_2024_formatted_10_14_2025.parquet')
 
 # 3. Add geocoding (optional)
 add_geocoding_for_students(2024)
 
 # 4. Partition by school/year
-make_partitions_by_school_year('matches_students_2024_formatted.parquet', 'matches_students_2024/')
+make_partitions_by_school_year('matches_students_2024_formatted_10_14_2025.parquet', 'matches_students_2024/')
 ```
 
 ### Adjusting Fuzzy Match Threshold:
