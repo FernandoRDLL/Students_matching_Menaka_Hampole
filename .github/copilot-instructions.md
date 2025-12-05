@@ -49,7 +49,7 @@ Main script for orchestrating the matching workflow. Contains commented examples
    - `geo_` prefix for geocoded fields
 4. **Data Cleaning**: Apply `clean_string()` to all name fields before matching
 5. **Fuzzy Matching Thresholds**: Default fuzzy score threshold is 90 for matching predicates
-6. **Birth Year Tolerance**: Default tolerance is 5-7 years when matching by age
+6. **Birth Year Tolerance**: Default tolerance is 5 years (configurable via `birth_year_tol` parameter)
 
 ## Matching Logic
 
@@ -57,7 +57,7 @@ The matching algorithm uses multiple predicates to reduce false positives:
 
 1. **First/Last Character Matching**: Check first and last characters of first/last names match
 2. **Fuzzy Similarity**: Jaro-Winkler similarity > 90 for both first and last names
-3. **Birth Year Range**: Students matched within age tolerance (typically cohort year - 21 ± tolerance)
+3. **Birth Year Range**: Voter birth year must fall within `(cohort - 21 - tolerance) < birth_year < (cohort - 21 + tolerance)` where cohort is the student's graduation year
 4. **Middle Initial Flag**: Optional additional verification using middle initials
 
 ## Data Flow
@@ -112,16 +112,17 @@ pip install ibis-framework[duckdb] polars pandas pyarrow rapidfuzz censusbatchge
 ### Running a Full Matching Pipeline:
 ```python
 # 1. Run matching in batches
-run_matching_in_batches('output_dir/', 'input_dir/', 'base_file.parquet', 'students', 7)
+# Parameters: (result_dir, input_voter_folder, student_base_file, type, birth_year_tolerance)
+run_matching_in_batches('Full_students_2024_10_14_2025/', '2024_reduced/', 'total_cohorts_09_22_2025.parquet', 'students', 7)
 
 # 2. Merge results
-merge_matching_batches('output_dir/', 'final_output.parquet')
+merge_matching_batches('Full_students_2024_10_14_2025/', 'matches_students_2024_formatted.parquet')
 
 # 3. Add geocoding (optional)
 add_geocoding_for_students(2024)
 
 # 4. Partition by school/year
-make_partitions_by_school_year('final_output.parquet', 'partitioned_output/')
+make_partitions_by_school_year('matches_students_2024_formatted.parquet', 'matches_students_2024/')
 ```
 
 ### Adjusting Fuzzy Match Threshold:
