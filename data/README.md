@@ -15,8 +15,8 @@ data/
 
 ### Input Directory (`input/`)
 Place your source data files here:
-- Student/parent parquet files (e.g., `total_cohorts_09_22_2025.parquet`)
-- Voter registration parquet files organized in subdirectories
+- Student/parent Parquet files (e.g., `total_cohorts_09_22_2025.parquet`)
+- Voter registration Parquet files organized in subdirectories
 - Any other input data required for matching
 
 ### Output Directory (`output/`)
@@ -35,7 +35,7 @@ This directory stores temporary files during processing:
 
 ## .gitignore
 
-All parquet and CSV files in these directories are excluded from version control to avoid committing large data files or sensitive information. Only this README and directory structure are tracked.
+All Parquet and CSV files in these directories are excluded from version control to avoid committing large data files or sensitive information. Only this README and directory structure are tracked.
 
 ## Best Practices
 

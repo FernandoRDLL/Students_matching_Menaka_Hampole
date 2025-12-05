@@ -34,7 +34,7 @@ The scripts will create various output directories during execution:
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- Python 3.9 or higher (tested on Python 3.12)
 - pip (Python package manager)
 - Sufficient disk space for processing large parquet files
 
